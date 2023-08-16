@@ -16,7 +16,6 @@ export default class Title extends Component {
             <div className = "title">
                 <div className = "titleText">
                     <h1>OREOLIS.</h1>
-                    <h6></h6>
                     <hr style = {{borderWidth: '4px'}}></hr>
                     <h2 className = "subtitle"><MovingComponent type="typewriter"
                         dataText={[
