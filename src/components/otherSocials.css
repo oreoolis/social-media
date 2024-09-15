@@ -1,0 +1,42 @@
+.otherSocials{
+    background: black;
+    padding: 100px;
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+.otherSocials h1{
+    color: white;
+    font-size: 5rem;
+}
+
+.otherSocials p{
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.textContainer{
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+}
+    
+
+@media only screen and (min-device-width : 375px) and (max-device-width : 1250px) {
+
+    .otherSocials p{
+        color: white;
+        font-size: 2rem;
+    }
+    
+    .textContainer{
+        height: 100%;
+        width: 100%;
+        display: flex; 
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+
+}
