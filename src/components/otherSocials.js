@@ -3,9 +3,9 @@ import'./otherSocials.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-import img4 from '../img/bust.png'
-import img5 from '../img/IMG_2033.jpg'
-import img6 from '../img/IMG_3772.png'
+import img4 from '../img2/bust.webp'
+import img5 from '../img2/IMG_2033.webp'
+import img6 from '../img2/IMG_3772.webp'
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -19,9 +19,14 @@ class OtherSocials extends Component {
         window.location.href = 'https://www.instagram.com/oreoolis/'
     }
 
-    redirectTelegramArt = () => {
-        window.location.href = 'https://t.me/+iJGBHsKu_D0zMzhl'
+    redirectTwitch = () => {
+        window.location.href = 'https://twitch.tv/oreolis'
     }
+
+    // deprecated social media link
+    // redirectTelegramArt = () => {
+    //     window.location.href = 'https://t.me/+iJGBHsKu_D0zMzhl'
+    // }
 
     redirectTelegramPhoto = () => {
         window.location.href = 'https://t.me/oreopubhouse'
@@ -49,11 +54,11 @@ class OtherSocials extends Component {
                         </div>
                     </div>
 
-                    <div className = "card" onClick={this.redirectTelegramArt}>
+                    <div className = "card" onClick={this.redirectTwitch}>
                         <LazyLoadImage className = "verticalImage" src = {img4}>
                         </LazyLoadImage>
                         <div className = "overlay">
-                        <h1 className="text-h1">Art Gallery</h1>
+                        <h1 className="text-h1">Twitch</h1>
                         <p className='text-p'>© packmackle</p>
                         </div>
                     </div>

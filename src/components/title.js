@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './title.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import MovingComponent from 'react-moving-text';
 
 const Rule = (  ) => (
     <hr style = {{}}
@@ -18,11 +17,11 @@ export default class Title extends Component {
     render() { 
         return (
             <div className = "title">
-                <div className = "titleText">
+                <div className = "titleText" data-aos="zoom-in" data-aos-duration="7000">
                     <h1>OREOLIS.</h1>
                     <h2> [oreo - lis] • singapore / philippines </h2>
                     <Rule/>
-                    <h5> (n.) a sheep, not a goat. 
+                    <h5 className = "subText"> (n.) a sheep, not a goat. 
                         <br></br>
                         software engineering undergrad, photographer, videographer,
                         <br></br>

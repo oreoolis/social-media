@@ -2,6 +2,14 @@
     background: #000;
     padding: 100px;
 }
+
+.referenceTitle h1{
+    font-family: "IBM Plex Sans", sans-serif;
+    color: white;
+    font-size: 5rem;
+    padding-top: 50px;
+}
+
 .linkComp {
     margin:auto;
     display: grid;
@@ -9,6 +17,7 @@
     grid-template-columns: auto auto auto;
     justify-content: space-between;
 }
+
 
 /* social media card design */
 
@@ -80,7 +89,7 @@
 }
 
 .mainSocials h1{
-    font-size: 5rem;
+    font-size: 6rem;
 }
 
 

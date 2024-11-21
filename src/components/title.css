@@ -1,7 +1,7 @@
 /* General styles for the title section */
 .title {
     padding: 250px; /* Large padding for larger screens */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)), url("/src/img/drawover1.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)), url("/src/img2/drawover1.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,7 +10,12 @@
 
 .titleText {
     color: white;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.subText{
+    font-family: 'IDM Plex';
+    font-size: 1.9rem;
 }
 
 /* Title text styling */
@@ -20,7 +25,7 @@
 }
 
 i{
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 /* Media Queries for Mobile Devices */
