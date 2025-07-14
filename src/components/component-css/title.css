@@ -39,19 +39,27 @@
 
 .titleText h5 {
     font-size: clamp(0.6rem, 1.2vw, 1.2rem);
-    margin: 0.2em 0 0 0;
-    font-weight: 400;
+    margin: 0.1em 0 0 0;
+    font-weight: 200;
 }
 
-.subText {
+.subText h5 {
     font-family: "DM Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-    font-size: clamp(0.9rem, 1.5vw, 1.5rem);
-    margin-top: 0.7em;
+    font-weight: 500;
+    font-size: 1.5rem;
     color: #eaeaea;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+.subText a {
+    text-decoration: none;
+    color: white;
+}
+
+.subText i {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
 }
 
 /* Responsive tweaks for very small screens */
@@ -72,7 +80,15 @@
         font-size: clamp(0.5rem, 2vw, 0.7rem);
     }
 
-    .subText {
-        font-size: clamp(0.8rem, 2vw, 1rem);
+    .subText h5 {
+        font-weight: 500;
+        font-size: 0.8rem;
     }
+
+    .subText i {
+        font-family: "DM Sans", sans-serif;
+        font-weight: 300;
+        font-size: 0.7rem;
+    }
+
 }
