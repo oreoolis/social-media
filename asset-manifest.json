@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f69299bb.css",
-    "main.js": "/static/js/main.3d5a550c.js",
+    "main.css": "/static/css/main.c0409b2a.css",
+    "main.js": "/static/js/main.8351c18d.js",
     "static/js/787.d7317416.chunk.js": "/static/js/787.d7317416.chunk.js",
     "static/media/oreo_cinema3.png": "/static/media/oreo_cinema3.c8c72542e593128cb2dd.png",
     "static/media/IMG_9582.JPG": "/static/media/IMG_9582.ada9927698de8e2ad7c8.JPG",
@@ -16,12 +16,12 @@
     "static/media/furum.jpg": "/static/media/furum.b59252d7fd9de7cdc5f8.jpg",
     "static/media/footer.jpg": "/static/media/footer.f158597e25ab43c9ddaf.jpg",
     "index.html": "/index.html",
-    "main.f69299bb.css.map": "/static/css/main.f69299bb.css.map",
-    "main.3d5a550c.js.map": "/static/js/main.3d5a550c.js.map",
+    "main.c0409b2a.css.map": "/static/css/main.c0409b2a.css.map",
+    "main.8351c18d.js.map": "/static/js/main.8351c18d.js.map",
     "787.d7317416.chunk.js.map": "/static/js/787.d7317416.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f69299bb.css",
-    "static/js/main.3d5a550c.js"
+    "static/css/main.c0409b2a.css",
+    "static/js/main.8351c18d.js"
   ]
 }
