@@ -1,0 +1,78 @@
+.title {
+    padding: min(18vw, 250px) 5vw;
+    background-image:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.5) 30%,
+            /* Middle: more opaque */
+            rgba(0, 0, 0, 1) 100%
+            /* Bottom: solid black */
+        ),
+        url("/src/images/oreo_cinema3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    box-sizing: border-box;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    /* Better readability */
+}
+
+.titleText {
+    color: #fff;
+    font-family: "Special Gothic Expanded One", sans-serif;
+
+}
+
+.titleText h1 {
+    font-size: clamp(2rem, 10vw, 10rem);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.titleText h2 {
+    font-size: clamp(0.8rem, 2.5vw, 2rem);
+    margin: 0.3em 0 0.2em 0;
+    font-weight: 400;
+}
+
+.titleText h5 {
+    font-size: clamp(0.6rem, 1.2vw, 1.2rem);
+    margin: 0.2em 0 0 0;
+    font-weight: 400;
+}
+
+.subText {
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-size: clamp(0.9rem, 1.5vw, 1.5rem);
+    margin-top: 0.7em;
+    color: #eaeaea;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive tweaks for very small screens */
+@media (max-width: 480px) {
+    .title {
+        padding: max(15vw, 60px) 3vw;
+    }
+
+    .titleText h1 {
+        font-size: clamp(1.5rem, 8vw, 2.3rem);
+    }
+
+    .titleText h2 {
+        font-size: clamp(0.7rem, 3vw, 0.9rem);
+    }
+
+    .titleText h5 {
+        font-size: clamp(0.5rem, 2vw, 0.7rem);
+    }
+
+    .subText {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+}

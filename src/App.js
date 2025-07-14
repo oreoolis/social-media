@@ -1,4 +1,5 @@
 import './App.css';
+import RefSheet from './components/refSheet';
 import Title from './components/title';
 import Links from './components/links';
 import OtherSocials from './components/otherSocials';
@@ -8,6 +9,7 @@ function App() {
   return (
     <div>
       <Title />
+      <RefSheet/>
       <Links/>
       <OtherSocials/>
       <Footer/>

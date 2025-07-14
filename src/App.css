@@ -1,8 +1,4 @@
 body {
     background-color: black;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),url("/src/img/drawover1.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; */
+    height: 100vh;
   }

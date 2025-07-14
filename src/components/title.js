@@ -1,34 +1,42 @@
 import React, { Component } from 'react';
-import './title.css';
+import './component-css/title.css';
+
+
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-const Rule = (  ) => (
-    <hr style = {{}}
+import Button from '../elements/openModalButton.js';
+
+
+const Rule = () => (
+    <hr style={{}}
     />
 )
 
+
 export default class Title extends Component {
-    componentDidMount(){
+    componentDidMount() {
         Aos.init();
     }
     
-
-    render() { 
+    render() {
         return (
-            <div className = "title">
-                <div className = "titleText" data-aos="zoom-in" data-aos-duration="7000">
-                    <h1>OREOLIS.</h1>
+            <div className="title">
+                <div className="titleText" data-aos="zoom-in" data-aos-duration="7000">
+                    <h1>OREOLIS</h1>
                     <h2> [oreo - lis] • singapore / philippines </h2>
-                    <Rule/>
-                    <h5 className = "subText"> (n.) a sheep, not a goat. 
+                    <h5><i>header artwork by <a href='https://x.com/Vernon_Cross' style={{color: 'white'}}>@Darkomi</a></i></h5>
+                    <Rule />
+                    <br></br>
+                    <h5 className="subText">
+                        (n.) a sheep, not a goat.
                         <br></br>
-                        software engineering undergrad, photographer, videographer,
+                        software engineering student, photographer and videographer.
                         <br></br>
-                        hobby graphic designer & cosplayer.
-                        <br></br>
-                        <i>because i don't have a fursuit yet.</i>
+                        did i mention i love black clover, beastars and my hero academia?
                     </h5>
+                    <br></br>
+                    <Button/>
                 </div>
 
             </div>

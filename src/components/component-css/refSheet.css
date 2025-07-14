@@ -1,0 +1,187 @@
+.refSheet {
+    background: #000;
+    padding: 6em;
+}
+
+.textArea {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 100px;
+    text-align: left;
+    color: white;
+    font-family: "Special Gothic Expanded One", sans-serif;
+}
+
+.textArea h1 {
+    font-size: 6.5em;
+    text-align: right;
+}
+
+.refImg{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* From Uiverse.io by gharsh11032000 */ 
+.refCard {
+  position: relative;
+  width: 50em;
+  height: 30em;
+  background: linear-gradient(-45deg, #f7f7f7 0%, #00f7ff 100% );
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 1px 1px 20px #FFFFFF;
+}
+
+.refCard:hover {
+  transform: rotate(-5deg) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.refCard__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 100%;
+  height: 100%;
+  padding: 150px;
+  box-sizing: border-box;
+  background-color: #047969;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  text-align: center;
+}
+
+.refCard:hover .refCard__content {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 1;
+}
+
+.refCard__title {
+  margin: 0;
+  font-size: 40px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.refCard__description {
+  margin: 10px 0 0;
+  font-size: 25px;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.refCard:hover svg {
+  scale: 0;
+  transform: rotate(-45deg);
+}
+
+/* Mobile Responsive Styles */
+
+/* Tablet styles (768px and below) */
+@media screen and (max-width: 768px) {
+    .refSheet {
+        padding: 3em 2em;
+    }
+    
+    .textArea {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .textArea h1 {
+        font-size: 4em;
+        text-align: center;
+    }
+    
+    .refCard {
+        width: 100%;
+        max-width: 40em;
+        height: 25em;
+        margin: 0 auto;
+    }
+    
+    .refCard__content {
+        padding: 100px 30px;
+    }
+    
+    .refCard__title {
+        font-size: 32px;
+    }
+    
+    .refCard__description {
+        font-size: 20px;
+    }
+}
+
+/* Mobile styles (480px and below) */
+@media screen and (max-width: 480px) {
+    .refSheet {
+        padding: 2em 1em;
+    }
+    
+    .textArea {
+        gap: 30px;
+    }
+    
+    .textArea h1 {
+        font-size: 2.5em;
+    }
+    
+    .refCard {
+        width: 100%;
+        height: 20em;
+        /* Reduce hover effects on mobile for better touch experience */
+    }
+    
+    .refCard:hover {
+        transform: scale(1.05);
+    }
+    
+    .refCard__content {
+        padding: 100px 30px;
+    }
+    
+    .refCard__title {
+        font-size: 24px;
+    }
+    
+    .refCard__description {
+        font-size: 16px;
+    }
+}
+
+/* Small mobile styles (320px and below) */
+@media screen and (max-width: 320px) {
+    .refSheet {
+        padding: 1.5em 0.5em;
+    }
+    
+    .textArea h1 {
+        font-size: 2em;
+    }
+    
+    .refCard {
+        height: 18em;
+    }
+    
+    .refCard__content {
+        padding: 40px 20px;
+    }
+    
+    .refCard__title {
+        font-size: 20px;
+    }
+    
+    .refCard__description {
+        font-size: 14px;
+    }
+}
