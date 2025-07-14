@@ -1,23 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.05d850f0.css",
-    "main.js": "/static/js/main.620a8e2f.js",
+    "main.css": "/static/css/main.f69299bb.css",
+    "main.js": "/static/js/main.3d5a550c.js",
     "static/js/787.d7317416.chunk.js": "/static/js/787.d7317416.chunk.js",
+    "static/media/oreo_cinema3.png": "/static/media/oreo_cinema3.c8c72542e593128cb2dd.png",
+    "static/media/IMG_9582.JPG": "/static/media/IMG_9582.ada9927698de8e2ad7c8.JPG",
     "static/media/IMG_3772.webp": "/static/media/IMG_3772.b60348b5c92f8f8f3098.webp",
+    "static/media/refsheet_V2.png": "/static/media/refsheet_V2.f0a4cfdca8c03c11e7b6.png",
+    "static/media/IMG_7177.JPG": "/static/media/IMG_7177.2bda07449718a9322c23.JPG",
     "static/media/53.webp": "/static/media/53.8eaefb6451fb1703b5cc.webp",
-    "static/media/drawover1.webp": "/static/media/drawover1.96af24391669575d53a3.webp",
-    "static/media/bust.webp": "/static/media/bust.2c3f6354db90d8be1468.webp",
+    "static/media/IMG_7174.JPG": "/static/media/IMG_7174.ef22d8dd73b13f702828.JPG",
     "static/media/KitsuneShrine_Pokemon___Sona-alt.webp": "/static/media/KitsuneShrine_Pokemon___Sona-alt.52319a5cceebadb1edda.webp",
     "static/media/IMG_2033.webp": "/static/media/IMG_2033.bd955b151d9e10ab16c4.webp",
     "static/media/OREOLIS_comm_mergedpsd.webp": "/static/media/OREOLIS_comm_mergedpsd.8219f2753bff072ba131.webp",
-    "static/media/image003.webp": "/static/media/image003.1495172a5246d3ae86af.webp",
+    "static/media/furum.jpg": "/static/media/furum.b59252d7fd9de7cdc5f8.jpg",
+    "static/media/footer.jpg": "/static/media/footer.f158597e25ab43c9ddaf.jpg",
     "index.html": "/index.html",
-    "main.05d850f0.css.map": "/static/css/main.05d850f0.css.map",
-    "main.620a8e2f.js.map": "/static/js/main.620a8e2f.js.map",
+    "main.f69299bb.css.map": "/static/css/main.f69299bb.css.map",
+    "main.3d5a550c.js.map": "/static/js/main.3d5a550c.js.map",
     "787.d7317416.chunk.js.map": "/static/js/787.d7317416.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.05d850f0.css",
-    "static/js/main.620a8e2f.js"
+    "static/css/main.f69299bb.css",
+    "static/js/main.3d5a550c.js"
   ]
 }
