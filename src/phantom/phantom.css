@@ -4,7 +4,7 @@ body{margin:0;background:#0b0b0b}
 .p5{--accent:#1e5f67;--ink:#0b0b0b;position:relative;overflow:hidden;background:var(--accent);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:500}
 .p5 *{box-sizing:border-box}
 .p5 img{display:block}
-.p5 h1,.p5 h2{text-wrap:balance}
+.p5 h1,.p5 h2{font-weight:inherit;text-wrap:balance}
 .p5 ::selection{background:var(--ink);color:#fff}
 
 .anton{font-family:Anton,sans-serif}
