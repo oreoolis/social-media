@@ -24,11 +24,17 @@ body{margin:0;background:#0b0b0b}
 
 /* ---------- ransom-note lettering ---------- */
 .ransom{display:inline-flex;flex-wrap:wrap;align-items:flex-end;gap:.04em;margin:0;line-height:1}
-.ransom span{display:inline-block;padding:.02em .1em;transition:transform .18s cubic-bezier(.3,1.7,.5,1)}
+.ransom span{display:inline-block;padding:.02em .1em;transform:rotate(var(--t,0deg)) translateY(var(--y,0));transition:transform .18s cubic-bezier(.3,1.7,.5,1)}
 .ransom:hover span{animation:jitter .32s steps(2) infinite}
 .ransom:hover span:nth-child(2n){animation-delay:.08s}
 .ransom:hover span:nth-child(3n){animation-delay:.16s}
 .ransom.name{flex-wrap:nowrap;white-space:nowrap;font-size:clamp(46px,13vw,78px)}
+.ransom .paper{background:#fff;color:var(--ink)}
+.ransom .ink{background:var(--ink);color:#fff}
+.ransom .lift{box-shadow:.07em .07em 0 #fff}
+.ransom .cut{color:#fff;text-shadow:.07em .07em 0 var(--ink)}
+.ransom .hot{background:var(--accent);color:#fff}
+.ransom .round{border-radius:50%}
 
 /* ---------- command menu ---------- */
 .cmd{position:relative;display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:6px 26px 6px 10px;background:#fff;color:var(--ink);text-decoration:none;transform:skewX(-14deg) rotate(var(--r,-4deg));box-shadow:6px 6px 0 var(--ink);transition:transform .2s cubic-bezier(.3,1.7,.5,1),background .12s,color .12s,box-shadow .2s}
@@ -60,6 +66,7 @@ body{margin:0;background:#0b0b0b}
 .nobr{white-space:nowrap}
 .scrawl{display:inline-block;font-family:'Permanent Marker',cursive;color:#fff;background:var(--ink);padding:.14em .55em .2em;line-height:1.2;transform:rotate(-4deg)}
 .scrawl a{color:inherit}
+.tagline .scrawl,.sec-head .scrawl{font-size:24px}
 .note{display:inline-block;align-self:flex-start;margin:0;background:var(--ink);color:#fff;padding:.26em .6em .32em;font-weight:700;line-height:1.25;transform:rotate(-1.2deg)}
 
 /* ---------- sections ---------- */
@@ -71,6 +78,8 @@ body{margin:0;background:#0b0b0b}
 #fursuit{padding:160px 0 60px;gap:56px}
 #refsheet{padding:120px 0 60px;display:flex;flex-wrap:wrap;gap:56px;align-items:center}
 #animes{padding:72px 0 40px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+#animes .note{font-size:20px}
+#animes .scrawl{font-size:22px;margin-left:12px}
 
 /* ---------- photos ---------- */
 .photo{position:relative;display:block;margin:0;border:10px solid #fff;background:var(--ink);box-shadow:12px 12px 0 var(--ink);transform:rotate(var(--r,-3deg));transition:transform .28s cubic-bezier(.3,1.6,.5,1),box-shadow .28s;overflow:hidden;align-self:start}
@@ -78,20 +87,20 @@ body{margin:0;background:#0b0b0b}
 .photo:hover{transform:rotate(0) translateY(-10px) scale(1.04);box-shadow:16px 16px 0 var(--ink),26px 26px 0 #fff;z-index:2}
 .photo:hover img{transform:scale(1.1)}
 
-/* ---------- fursuit collage ---------- */
+/* ---------- fursuit collage: a seven-slot pattern that repeats, so any number of photos lays out ---------- */
 .wall{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 28px;align-items:start}
-.wall .photo:nth-child(1){grid-column:1 / 8;--r:-2deg}
-.wall .photo:nth-child(2){grid-column:8 / 13;--r:3deg;margin-top:56px}
-.wall .photo:nth-child(3){grid-column:1 / 5;--r:-3deg;margin-top:-34px}
-.wall .photo:nth-child(4){grid-column:5 / 9;--r:2deg;margin-top:30px}
-.wall .photo:nth-child(5){grid-column:9 / 13;--r:-1.5deg;margin-top:-18px}
-.wall .photo:nth-child(6){grid-column:1 / 8;--r:1.5deg;margin-top:44px}
-.wall .photo:nth-child(7){grid-column:8 / 13;--r:-2.5deg;margin-top:-8px}
+.wall .photo:nth-child(7n+1){grid-column:1 / 8;--r:-2deg}
+.wall .photo:nth-child(7n+2){grid-column:8 / 13;--r:3deg;margin-top:56px}
+.wall .photo:nth-child(7n+3){grid-column:1 / 5;--r:-3deg;margin-top:-34px}
+.wall .photo:nth-child(7n+4){grid-column:5 / 9;--r:2deg;margin-top:30px}
+.wall .photo:nth-child(7n+5){grid-column:9 / 13;--r:-1.5deg;margin-top:-18px}
+.wall .photo:nth-child(7n+6){grid-column:1 / 8;--r:1.5deg;margin-top:44px}
+.wall .photo:nth-child(7n+7){grid-column:8 / 13;--r:-2.5deg;margin-top:-8px}
 @media (max-width:1100px){
 .wall{gap:32px 24px}
 .wall .photo:nth-child(n){grid-column:auto / span 6;margin-top:0}
-.wall .photo:nth-child(1),.wall .photo:nth-child(6){grid-column:1 / -1}
-.wall .photo:nth-child(7){grid-column:3 / 11}
+.wall .photo:nth-child(7n+1),.wall .photo:nth-child(7n+6){grid-column:1 / -1}
+.wall .photo:nth-child(7n+7){grid-column:3 / 11}
 .wall .photo:nth-child(4){order:1}
 .wall .photo:nth-child(n+6){order:2}
 }
@@ -133,7 +142,8 @@ body{margin:0;background:#0b0b0b}
 .stage .glyph{width:34px;height:34px}
 
 /* ---------- ref sheet ---------- */
-.ref-title{flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:18px}
+.ref-title{flex:999 1 460px;min-width:0;margin:0;display:flex;flex-direction:column;gap:18px}
+.ref-title .indent{margin-left:40px}
 .ref-title .ransom{font-size:clamp(44px,6vw,84px)}
 .ref{flex:1 1 380px;min-width:0;max-width:520px;display:block;text-decoration:none;color:var(--ink);background:#fff;padding:12px 12px 18px;box-shadow:14px 14px 0 var(--ink);transform:rotate(3deg);transition:transform .3s cubic-bezier(.3,1.6,.5,1),box-shadow .3s}
 .ref img{width:100%;height:auto}
@@ -145,6 +155,8 @@ body{margin:0;background:#0b0b0b}
 /* ---------- footer ---------- */
 .foot{position:relative;z-index:1;margin-top:80px;background:var(--ink);clip-path:polygon(0 18%,12% 4%,26% 16%,41% 0,57% 14%,72% 2%,86% 12%,100% 0,100% 100%,0 100%);padding:110px 24px 64px}
 .foot-in{max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
+.foot .ransom{font-size:44px}
+.foot .scrawl{font-size:20px}
 
 /* ---------- motion ---------- */
 @keyframes spin{to{transform:rotate(360deg)}}

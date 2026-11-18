@@ -32,17 +32,40 @@ const ANIMES = [
 
 const BAND = ['PHOTOGRAPHER', 'VIDEOGRAPHER', 'SOFTWARE ENGINEERING STUDENT'];
 
-const WHITE = { background: '#fff', color: 'var(--ink)' };
-const INK = { background: 'var(--ink)', color: '#fff' };
-
-// One cut-out letter of the ransom-note lettering; `t` is its tilt in degrees.
-function Bit({ t, shift = '', className, style, children }) {
+// Ransom-note lettering. Each piece is [text, look, tilt in degrees, extra style].
+// Looks (paper, ink, lift, cut, hot, round) and fonts (anton, archivo, marker) are classes in phantom.css.
+function Ransom({ as: Tag = 'div', label, pieces, className }) {
   return (
-    <span className={className} style={{ '--t': `${t}deg`, transform: `rotate(${t}deg)${shift}`, ...style }}>
-      {children}
-    </span>
+    <Tag className={className ? `ransom ${className}` : 'ransom'} aria-label={label}>
+      {pieces.map(([text, look, tilt, style], i) => (
+        <span key={i} className={look} style={{ '--t': `${tilt}deg`, ...style }}>{text}</span>
+      ))}
+    </Tag>
   );
 }
+
+const NAME = [
+  ['O', 'paper anton', -6],
+  ['R', 'ink archivo', 4, { fontSize: '.82em' }],
+  ['E', 'cut anton', -3, { '--y': '-.08em' }],
+  ['O', 'paper archivo round', 7, { fontSize: '.9em' }],
+  ['L', 'ink anton', -5, { fontSize: '1.08em' }],
+  ['I', 'paper marker', 3, { '--y': '.06em', fontSize: '.78em' }],
+  ['S', 'ink lift anton', -8, { marginLeft: '.08em' }],
+];
+
+const REF_TITLE = [
+  [['MY', 'ink lift anton', -4], ['FURSONA', 'paper archivo', 3]],
+  [['REFERENCE', 'cut anton', 2]],
+  [['SHEET', 'ink lift archivo', -6], ['!', 'paper marker', 8]],
+];
+
+const SIGNATURE = [
+  ['©', 'paper anton', -4],
+  ['OREOLIS', 'hot archivo', 3],
+  ['2026', 'anton', -2],
+  ['v3.0.1', 'paper marker', 5, { fontSize: '.6em' }],
+];
 
 // Every second card sits lower, so a row reads as a scattered pile.
 function Cards({ items }) {
@@ -86,17 +109,9 @@ export default function Phantom() {
           <div className="hero-copy">
             <div className="tagline">
               <span className="stamp" lang="ja" aria-hidden="true">羊</span>
-              <span className="scrawl" style={{ fontSize: 24 }}>(n.) a sheep, not a goat.</span>
+              <span className="scrawl">(n.) a sheep, not a goat.</span>
             </div>
-            <h1 className="ransom name" aria-label="OREOLIS">
-              <Bit t={-6} className="anton" style={WHITE}>O</Bit>
-              <Bit t={4} className="archivo" style={{ ...INK, fontSize: '.82em' }}>R</Bit>
-              <Bit t={-3} shift=" translateY(-.08em)" className="anton" style={{ color: '#fff', textShadow: '.07em .07em 0 var(--ink)' }}>E</Bit>
-              <Bit t={7} className="archivo" style={{ ...WHITE, fontSize: '.9em', borderRadius: '50%' }}>O</Bit>
-              <Bit t={-5} className="anton" style={{ ...INK, fontSize: '1.08em' }}>L</Bit>
-              <Bit t={3} shift=" translateY(.06em)" className="marker" style={{ ...WHITE, fontSize: '.78em' }}>I</Bit>
-              <Bit t={-8} className="anton" style={{ ...INK, boxShadow: '.07em .07em 0 #fff', marginLeft: '.08em' }}>S</Bit>
-            </h1>
+            <Ransom as="h1" className="name" label="OREOLIS" pieces={NAME} />
             <div className="plate loc">
               <span>DORSET HORN SHEEP • <span className="nobr">SINGAPORE / PHILIPPINES</span></span>
             </div>
@@ -149,7 +164,7 @@ export default function Phantom() {
         <section id="others" className="sec">
           <div className="sec-head">
             <h2 className="plate heading"><span>OTHER SOCIALS.</span></h2>
-            <span className="scrawl" style={{ fontSize: 26 }}>they're important too!</span>
+            <span className="scrawl">they're important too!</span>
           </div>
           <Cards items={otherSocials} />
         </section>
@@ -157,7 +172,7 @@ export default function Phantom() {
         <section id="fursuit" className="sec">
           <div className="sec-head">
             <h2 className="plate heading"><span>MY FURSUIT!</span></h2>
-            <span className="scrawl" style={{ fontSize: 24 }}>
+            <span className="scrawl">
               made by: <a href="https://www.instagram.com/li.zizizizi55/">@li.zizizizi55</a>
             </span>
           </div>
@@ -171,19 +186,11 @@ export default function Phantom() {
         </section>
 
         <section id="refsheet">
-          <div className="ref-title">
-            <h2 className="ransom" aria-label="My fursona reference sheet!">
-              <Bit t={-4} className="anton" style={{ ...INK, boxShadow: '.07em .07em 0 #fff' }}>MY</Bit>
-              <Bit t={3} className="archivo" style={WHITE}>FURSONA</Bit>
-            </h2>
-            <h2 className="ransom" style={{ marginLeft: 40 }} aria-hidden="true">
-              <Bit t={2} className="anton" style={{ color: '#fff', textShadow: '.07em .07em 0 var(--ink)' }}>REFERENCE</Bit>
-            </h2>
-            <h2 className="ransom" aria-hidden="true">
-              <Bit t={-6} className="archivo" style={{ ...INK, boxShadow: '.07em .07em 0 #fff' }}>SHEET</Bit>
-              <Bit t={8} className="marker" style={WHITE}>!</Bit>
-            </h2>
-          </div>
+          <h2 className="ref-title" aria-label="My fursona reference sheet!">
+            {REF_TITLE.map((line, i) => (
+              <Ransom key={i} as="span" className={i === 1 ? 'indent' : undefined} pieces={line} />
+            ))}
+          </h2>
           <a className="ref" href="https://drive.google.com/file/d/1Nz4n_Ar8fak6eE6x_8OzFcUYkO6_WYpO/view?usp=sharing">
             <img width="825" height="1100" loading="lazy" src={refPreview} alt="Oreolis fursona reference sheet preview" />
             <span className="ref-cta">FULL REFERENCE SHEET IMAGE</span>
@@ -195,25 +202,20 @@ export default function Phantom() {
         </section>
 
         <section id="animes">
-          <p className="note" style={{ fontSize: 20 }}>did i mention i love…</p>
+          <p className="note">did i mention i love…</p>
           <div className="jumps">
             {ANIMES.map((a) => (
               <a key={a.name} className="chip" href={a.href}>{PLAY}<span>{a.name}</span></a>
             ))}
           </div>
-          <span className="scrawl" style={{ fontSize: 22, marginLeft: 12 }}>psst… click the animes!</span>
+          <span className="scrawl">psst… click the animes!</span>
         </section>
       </div>
 
       <footer className="foot">
         <div className="foot-in">
-          <div className="ransom" style={{ fontSize: 44 }} aria-label="© OREOLIS 2026 v3.0.1">
-            <Bit t={-4} className="anton" style={WHITE}>©</Bit>
-            <Bit t={3} className="archivo" style={{ background: 'var(--accent)', color: '#fff' }}>OREOLIS</Bit>
-            <Bit t={-2} className="anton" style={{ color: '#fff' }}>2026</Bit>
-            <Bit t={5} className="marker" style={{ ...WHITE, fontSize: '.6em' }}>v3.0.1</Bit>
-          </div>
-          <span className="scrawl" style={{ fontSize: 20 }}>if you notice any bugs on this site, let me know!</span>
+          <Ransom pieces={SIGNATURE} />
+          <span className="scrawl">if you notice any bugs on this site, let me know!</span>
         </div>
       </footer>
     </div>

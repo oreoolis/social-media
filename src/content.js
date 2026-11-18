@@ -45,7 +45,7 @@ export const socials = [
   },
 ];
 
-// In collage order: the fursuit wall places photos by position.
+// In collage order: the wall's slot pattern repeats every seven photos, so adding one never breaks it.
 export const fursuitPhotos = [
   { src: `${S3}/photos/DSC03308.jpg`, width: 6000, height: 4000, alt: 'Oreolis waving under a chandelier' },
   { src: `${S3}/photos/SDIM0063.jpg`, width: 4960, height: 4000, alt: 'Oreolis standing on a red bridge with a katana' },
