@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
+import { socials } from './content';
 
 const SOCIALS = [
   'https://www.instagram.com/oreoolis/',
@@ -21,6 +22,14 @@ test('hero socials menu offers the main three plus more', () => {
   const menu = screen.getByRole('navigation', { name: 'Socials' });
   const links = Array.from(menu.querySelectorAll('a')).map((a) => a.getAttribute('href'));
   expect(links).toEqual([SOCIALS[0], SOCIALS[1], SOCIALS[2], '#others']);
+});
+
+test('every social card shows its artwork and credit', () => {
+  render(<App />);
+  socials.forEach((s) => {
+    const card = screen.getByRole('link', { name: new RegExp(`^${s.name}\\s*Art by: © ${s.credit}$`, 'i') });
+    expect(card.querySelector('img').getAttribute('src')).toMatch(/^https:\/\//);
+  });
 });
 
 test('pause button stops and restarts the motion', () => {

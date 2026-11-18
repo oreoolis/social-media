@@ -1,51 +1,28 @@
 import { useState } from 'react';
 import './phantom.css';
-import { artworks } from '../images/artwork-images.ts';
-import { fursuitImages } from '../images/fursuit-images.ts';
+import { fursuitPhotos, socials } from '../content';
 import cutout from './assets/oreolis-beastars-cutout.webp';
 import refPreview from './assets/refsheet-preview.webp';
-
-const art = Object.assign({}, ...artworks);
-const suit = Object.assign({}, ...fursuitImages);
-
-const IG = 'https://www.instagram.com/oreoolis/';
-const TW = 'https://twitter.com/Oreolis_';
-const YT = 'https://www.youtube.com/channel/UCHIBRyhDPtMZVJKCdKU9jvw';
 
 const OUT = <svg className="out" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M9 6h9v9" stroke="currentColor" strokeWidth="3" fill="none" /></svg>;
 const DOWN = <svg className="out" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6" stroke="currentColor" strokeWidth="3" fill="none" /></svg>;
 const GO = <svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 12h13M12 5l7 7-7 7" stroke="#fff" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 const PLAY = <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 19 12 8 19Z" stroke="currentColor" strokeWidth="2.6" strokeLinejoin="round" fill="none" /></svg>;
 
-const MENU = [
-  { label: 'INSTAGRAM', href: IG, r: '-4deg', glyph: <path d="M12 3 22 20H2Z" strokeWidth="2.8" strokeLinejoin="round" /> },
-  { label: 'TWITTER', href: TW, r: '3deg', glyph: <circle cx="12" cy="12" r="8" strokeWidth="3" /> },
-  { label: 'YOUTUBE', href: YT, r: '-2deg', glyph: <path d="M5 5 19 19M19 5 5 19" strokeWidth="3.2" strokeLinecap="round" /> },
-  { label: 'MORE', href: '#others', r: '4deg', glyph: <rect x="5" y="5" width="14" height="14" strokeWidth="3" />, ariaLabel: 'More socials' },
+// Hero menu plates take these icons and tilts in turn.
+const GLYPHS = [
+  <path d="M12 3 22 20H2Z" strokeWidth="2.8" strokeLinejoin="round" />,
+  <circle cx="12" cy="12" r="8" strokeWidth="3" />,
+  <path d="M5 5 19 19M19 5 5 19" strokeWidth="3.2" strokeLinecap="round" />,
+  <rect x="5" y="5" width="14" height="14" strokeWidth="3" />,
 ];
+const MENU_TILTS = ['-4deg', '3deg', '-2deg', '4deg'];
+const CARD_TILTS = ['-3deg', '2deg', '-1deg', '1deg'];
 
-const MAIN = [
-  { name: 'INSTAGRAM', href: IG, credit: 'radishkek', src: art.radish_art, w: 900, h: 1044, r: '-3deg' },
-  { name: 'TWITTER', href: TW, credit: 'yoonkiepls', src: art.yoonkie_1, w: 862, h: 1200, r: '2deg', drop: true },
-  { name: 'YOUTUBE', href: YT, credit: 'shibuyadogs', src: art.art_shibuya, w: 867, h: 1100, r: '-1deg' },
-];
-
-const OTHERS = [
-  { name: 'BLUESKY', href: 'https://bsky.app/profile/oreolis.bsky.social', credit: 'CrowParadeArt', src: art.profile_pic_2, w: 962, h: 1200, r: '2deg' },
-  { name: 'PHOTO GALLERY', href: 'https://t.me/oreoheroaca', credit: 'masterblader191', src: art.sherbet_art, w: 638, h: 1100, r: '-3deg', drop: true },
-  { name: 'FACEBOOK', href: 'https://www.facebook.com/oreoolis', credit: 'Yoonkie', src: art.yoonkie_2, w: 1200, h: 846, r: '1deg' },
-];
-
-// Collage order matters: the grid in phantom.css places these by position.
-const PHOTOS = [
-  { src: suit.image_1, w: 1200, h: 800, alt: 'Oreolis waving under a chandelier' },
-  { src: suit.image_5, w: 1200, h: 968, alt: 'Oreolis standing on a red bridge with a katana' },
-  { src: suit.image_4, w: 1200, h: 675, alt: 'Oreolis gripping a katana, shot from above' },
-  { src: suit.image_6, w: 1200, h: 968, alt: 'Oreolis looking out from the red bridge' },
-  { src: suit.image_7, w: 1200, h: 968, alt: 'Oreolis standing under a tree' },
-  { src: suit.image_2, w: 1200, h: 515, alt: 'Oreolis in a black coat by the river' },
-  { src: suit.image_3, w: 1200, h: 968, alt: 'Oreolis leaning over the red bridge railing' },
-];
+const tilted = socials.map((s, i) => ({ ...s, tilt: CARD_TILTS[i % CARD_TILTS.length] }));
+const mainSocials = tilted.filter((s) => s.main);
+const otherSocials = tilted.filter((s) => !s.main);
+const menu = [...mainSocials, { name: 'More', href: '#others', ariaLabel: 'More socials' }];
 
 const ANIMES = [
   { name: 'Black Clover', href: 'https://youtu.be/fFd1VkGc-SI?si=Lq2FVbKnyAtKMljn' },
@@ -67,16 +44,17 @@ function Bit({ t, shift = '', className, style, children }) {
   );
 }
 
+// Every second card sits lower, so a row reads as a scattered pile.
 function Cards({ items }) {
   return (
     <div className="cards">
-      {items.map((c) => (
-        <a key={c.name} className={c.drop ? 'card drop' : 'card'} href={c.href} style={{ '--r': c.r }}>
-          <img width={c.w} height={c.h} loading="lazy" src={c.src} alt="" />
+      {items.map((s, i) => (
+        <a key={s.name} className={i % 2 ? 'card drop' : 'card'} href={s.href} style={{ '--r': s.tilt }}>
+          <img width={s.art.width} height={s.art.height} loading="lazy" src={s.art.src} alt="" />
           <span className="go" aria-hidden="true">{GO}</span>
           <span className="label">
-            <span className="name">{c.name}</span>
-            <span className="credit">Art by: © {c.credit}</span>
+            <span className="name">{s.name}</span>
+            <span className="credit">Art by: © {s.credit}</span>
           </span>
         </a>
       ))}
@@ -143,12 +121,12 @@ export default function Phantom() {
               <div className="plate credit"><span>Art by: © NuncioNull</span></div>
             </div>
             <nav className="menu" aria-label="Socials">
-              {MENU.map((m) => (
-                <a key={m.label} className="cmd" href={m.href} aria-label={m.ariaLabel} style={{ '--r': m.r }}>
+              {menu.map((m, i) => (
+                <a key={m.name} className="cmd" href={m.href} aria-label={m.ariaLabel} style={{ '--r': MENU_TILTS[i % MENU_TILTS.length] }}>
                   <span className="glyph">
-                    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none">{m.glyph}</svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none">{GLYPHS[i % GLYPHS.length]}</svg>
                   </span>
-                  <span><span className="cmd-big">{m.label}{m.href.startsWith('#') ? DOWN : OUT}</span></span>
+                  <span><span className="cmd-big">{m.name}{m.href.startsWith('#') ? DOWN : OUT}</span></span>
                 </a>
               ))}
             </nav>
@@ -165,7 +143,7 @@ export default function Phantom() {
 
         <section id="socials" className="sec">
           <h2 className="plate heading"><span>MAIN SOCIALS.</span></h2>
-          <Cards items={MAIN} />
+          <Cards items={mainSocials} />
         </section>
 
         <section id="others" className="sec">
@@ -173,7 +151,7 @@ export default function Phantom() {
             <h2 className="plate heading"><span>OTHER SOCIALS.</span></h2>
             <span className="scrawl" style={{ fontSize: 26 }}>they're important too!</span>
           </div>
-          <Cards items={OTHERS} />
+          <Cards items={otherSocials} />
         </section>
 
         <section id="fursuit" className="sec">
@@ -184,9 +162,9 @@ export default function Phantom() {
             </span>
           </div>
           <div className="wall">
-            {PHOTOS.map((p) => (
+            {fursuitPhotos.map((p) => (
               <figure key={p.src} className="photo">
-                <img width={p.w} height={p.h} loading="lazy" src={p.src} alt={p.alt} />
+                <img width={p.width} height={p.height} loading="lazy" src={p.src} alt={p.alt} />
               </figure>
             ))}
           </div>
